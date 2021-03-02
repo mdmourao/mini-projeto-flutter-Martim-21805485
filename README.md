@@ -14,5 +14,10 @@ A solução a ser desenvolvida resume-se a uma aplicação Híbrida-Nativa desen
 em Flutter, desta forma poderá servir tanto os munícipes que utilizam Android como os que
 usam iOS.
 
+# Direitos Autorais
+
+Todas as imagens usadas na aplicação são apenas para uso educacional e não representam efeito em nenhum produto comercial
+
+Todos os direitos das images pertencem aos seus criadores.
 
 Author: Martim Mourão 21805485
