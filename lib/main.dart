@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:miniprojetoflutter21805485/drawerMenu.dart';
+
+import 'incidentesAbertosScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,18 +14,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'iQueChumbei',
       theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primarySwatch: Colors.lightBlue,
       ),
-        home: TestPage ()
-    );
-  }
-}
-
-class TestPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: Text("Hello World!!"),),
+        home: IncidentesAbertosScreen (),
     );
   }
 }
