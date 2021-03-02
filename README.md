@@ -1,17 +1,18 @@
-# miniprojetoflutter21805485
+# Mini Projeto Flutter 21805485
 
-A new Flutter application.
+A empresa iQueChumbei decidiu construir uma aplicação que visa ajudar os
+municípios através dos seus munícipes na manutenção das ruas. Devido à questão da
+pandemia, tem se identificado ainda mais lixo nas ruas, como por exemplo máscaras entre
+outros utensílios. A limpeza das ruas acarreta por isso uma maior coordenação e empenho de
+forma que outras tarefas não fiquem por realizar, como por exemplo a manutenção das
+estradas ou dos jardins.
 
-## Getting Started
+Uma vez que os alunos da Universidade Lusófona de Humanidades e Tecnologias têm
+tido boa fama no que diz respeito aos projetos de informática, a empresa iQueChumbei
+decidiu contratualizar os serviços destes alunos para o desenvolvimento desta aplicação.
+A solução a ser desenvolvida resume-se a uma aplicação Híbrida-Nativa desenvolvida
+em Flutter, desta forma poderá servir tanto os munícipes que utilizam Android como os que
+usam iOS.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-"# mini-projeto-flutter-Martim-21805485" 
+Author: Martim Mourão 21805485
