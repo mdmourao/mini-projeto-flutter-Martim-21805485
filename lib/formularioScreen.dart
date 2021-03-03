@@ -10,36 +10,29 @@ import 'data/datasourceincidentes.dart';
 import 'main.dart';
 
 class FormularioScreen extends StatelessWidget {
-  final IncidenteBlocProvider incidenteBlocProvider;
 
-  FormularioScreen({this.incidenteBlocProvider});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Formulário Incidente")),
-      body: myForm(incidenteBlocProvider: incidenteBlocProvider,),
+      body: myForm(),
     );
   }
 }
 
 class myForm extends StatefulWidget {
 
-  final IncidenteBlocProvider incidenteBlocProvider;
 
-  myForm({this.incidenteBlocProvider});
+  myForm();
 
   @override
-  myFormState createState() {
-    return myFormState(incidenteBlocProvider: incidenteBlocProvider);
+  _myFormState createState() {
+    return _myFormState();
   }
 }
 
-class myFormState extends State<myForm> {
-  final IncidenteBlocProvider incidenteBlocProvider;
-
-  myFormState({this.incidenteBlocProvider});
-
+class _myFormState extends State<myForm> {
 
   final _formKey = GlobalKey<FormState>();
   TextEditingController tituloController = TextEditingController();
@@ -145,13 +138,8 @@ class myFormState extends State<myForm> {
                     child: RaisedButton(
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
-                          DataSourceIncidente.getInstance().insert(Incidente(
-                              titulo: tituloController.text,
-                              descricao: descricaoController.text,
-                              morada: moradaController.text));
-                          incidenteBlocProvider.consultaDados();
+                          IncidenteBlocProvider.getInstance().insereDados(Incidente(titulo: tituloController.text, descricao: descricaoController.text, morada: moradaController.text));
                           Navigator.push(
-
                               context,
                               MaterialPageRoute(
                                 builder: (context) => MyApp(),

@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:miniprojetoflutter21805485/incidentesFechadosScreen.dart';
 import 'package:miniprojetoflutter21805485/main.dart';
 
+import 'blocs/incidenteBLoC.dart';
 import 'incidentesAbertosScreen.dart';
 
 class DrawMenu extends StatelessWidget{
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
