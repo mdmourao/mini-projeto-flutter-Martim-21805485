@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:miniprojetoflutter21805485/blocs/incidenteBLoCFechado.dart';
 import 'package:miniprojetoflutter21805485/data/datasourceincidentes.dart';
+import 'package:miniprojetoflutter21805485/data/datasourceincidentesFechados..dart';
 import 'package:miniprojetoflutter21805485/incidente.dart';
 import 'package:rxdart/rxdart.dart';
 import 'dart:math';
@@ -37,6 +39,7 @@ class IncidenteBlocProvider{
 
   void remove(i){
     DataSourceIncidente.getInstance().remove(i);
+    IncidenteBlocFechadoProvider.getInstance().insereDados(i);
     _content = DataSourceIncidente.getInstance().getAll();
     _input.add(_content);
   }

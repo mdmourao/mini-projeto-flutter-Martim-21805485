@@ -57,6 +57,9 @@ flutter:
     - lib/assets/manutencao.png
     - lib/assets/red.png
     - lib/assets/green.png
+    - lib/assets/close.png
+    - lib/assets/res.png
+    - lib/assets/checkgreen.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
