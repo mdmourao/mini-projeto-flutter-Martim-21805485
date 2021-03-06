@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import '../incidente.dart';
 import 'dart:math';
 
@@ -43,10 +45,20 @@ class DataSourceIncidente {
     }
   }
 
-  void shake(){
+  void resolveIncidente(){
     var rng = new Random();
-    var i = rng.nextInt(_datasource.length);
-    _datasource.elementAt(i).resolvido = true;
+    int count = 0;
+    var allPos = [];
+    for(int i = 0; i < _datasource.length; i++){
+      if (_datasource.elementAt(i).resolvido == false){
+        allPos.add(i);
+      }
+    }
+    var random = rng.nextInt(allPos.length);
+    if(allPos.length == 0){
+      return;
+    }
+    _datasource.elementAt(allPos.elementAt(random)).resolvido = true;
   }
 
   List getAll() => _datasource;

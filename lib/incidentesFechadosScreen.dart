@@ -2,19 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:miniprojetoflutter21805485/blocs/incidenteBLoCFechado.dart';
 import 'package:miniprojetoflutter21805485/drawerMenu.dart';
+import 'detailIncidenteScreen.dart';
 import 'incidente.dart';
 import 'package:shake/shake.dart';
 
 class IncidentesFechadosScreen extends StatelessWidget {
-
-  IncidentesFechadosScreen(){
+  IncidentesFechadosScreen() {
     ShakeDetector detector = ShakeDetector.autoStart(onPhoneShake: () {
       //TODO
       //IncidenteBlocProvider.getInstance().shake();
     });
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -55,53 +53,61 @@ class ListaIncidente extends StatelessWidget {
           return Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Card(
-                  color: Colors.white60,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                              width: 50.0,
-                              height: 50.0,
-                              decoration: new BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: new DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage("lib/assets/close.png")
-                                  )
-                              )
-                          ),
-                        ),
-                        Flexible(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                item.titulo,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
+                  padding: const EdgeInsets.all(10.0),
+                  child: GestureDetector(
+                    onTap: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailIncidenteScreen(
+                              incidente: item, isClosed: true,
+                            ),
+                          ))
+                    },
+                    child: Card(
+                      color: Colors.white60,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  decoration: new BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: new DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: AssetImage(
+                                              "lib/assets/close.png")))),
+                            ),
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    item.titulo,
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Divider(),
+                                  Text(
+                                    item.toStringDate(),
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 15),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
                               ),
-                              Divider(),
-                              Text(
-                                item.toStringDate(),
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 15),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
-              )
+                  ))
             ],
           );
         },

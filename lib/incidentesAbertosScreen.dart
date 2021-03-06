@@ -1,19 +1,19 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:miniprojetoflutter21805485/detailIncidenteScreen.dart';
 import 'package:miniprojetoflutter21805485/drawerMenu.dart';
 import 'package:miniprojetoflutter21805485/formularioScreen.dart';
-
+import 'package:volume_watcher/volume_watcher.dart';
 import 'blocs/incidenteBLoC.dart';
 import 'incidente.dart';
 import 'package:shake/shake.dart';
+import 'package:flutter/material.dart';
+import 'package:hardware_buttons/hardware_buttons.dart' as HardwareButtons;
 
 class IncidentesAbertosScreen extends StatelessWidget {
-  IncidentesAbertosScreen() {
-    ShakeDetector detector = ShakeDetector.autoStart(onPhoneShake: () {
-      IncidenteBlocProvider.getInstance().shake();
-    });
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -63,16 +63,29 @@ class ListaIncidente extends StatelessWidget {
           final item = content[index];
           return Dismissible(
             key: UniqueKey(),
+            confirmDismiss: (direction) async {
+              if (item.resolvido) {
+                Scaffold.of(context).showSnackBar(
+                    SnackBar(content: Text("O seu incidente foi dado como fechado.")));
+                return true;
+              } else{
+                Scaffold.of(context).showSnackBar(
+                    SnackBar(content: Text("Este incidente ainda não se encontra resolvido, por isso não pode transitar para a lista dos fechados.")));
+                return false;
+              }
+            },
             onDismissed: (direction) {
-              IncidenteBlocProvider.getInstance().remove(item);
-              Scaffold.of(context).showSnackBar(
-                  SnackBar(content: Text("${item.titulo} dismissed")));
+              IncidenteBlocProvider.getInstance().close(item);
+
             },
             child: Column(
               children: [
                 Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: GestureDetector(
+                      onDoubleTap: () =>  {
+                            IncidenteBlocProvider.getInstance().resolveIncidente()
+                      },
                       onTap: () => {
                             Navigator.push(
                                 context,
@@ -123,6 +136,25 @@ class ListaIncidente extends StatelessWidget {
                                   ],
                                 ),
                               ),
+                              RawMaterialButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DetailIncidenteScreen(incidente: item,),
+                                      )
+                                  );
+                                },
+                                elevation: 5.0,
+                                fillColor: Colors.lightBlue,
+                                child: Icon(
+                                  Icons.more_horiz_outlined,
+                                  color: Colors.white,
+                                  size: 25.0,
+                                ),
+                                padding: EdgeInsets.all(1.0),
+                                shape: CircleBorder(),
+                              )
                             ],
                           ),
                         ),
@@ -138,4 +170,6 @@ class ListaIncidente extends StatelessWidget {
       ),
     );
   }
+
+
 }

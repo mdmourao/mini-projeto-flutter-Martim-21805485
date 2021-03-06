@@ -32,20 +32,33 @@ class IncidenteBlocProvider{
     _input.add(_content);
   }
 
+  void updateDados(i){
+    DataSourceIncidente.getInstance().remove(i);
+    DataSourceIncidente.getInstance().insert(i);
+    _content = DataSourceIncidente.getInstance().getAll();
+    _input.add(_content);
+  }
+
+
   void confirmUpdate(){
     _content = DataSourceIncidente.getInstance().getAll();
     _input.add(_content);
   }
 
-  void remove(i){
+  void close(i){
     DataSourceIncidente.getInstance().remove(i);
     IncidenteBlocFechadoProvider.getInstance().insereDados(i);
     _content = DataSourceIncidente.getInstance().getAll();
     _input.add(_content);
   }
+  void remove(i){
+    DataSourceIncidente.getInstance().remove(i);
+    _content = DataSourceIncidente.getInstance().getAll();
+    _input.add(_content);
+  }
 
-  void shake(){
-      DataSourceIncidente.getInstance().shake();
+  void resolveIncidente(){
+      DataSourceIncidente.getInstance().resolveIncidente();
       confirmUpdate();
   }
 

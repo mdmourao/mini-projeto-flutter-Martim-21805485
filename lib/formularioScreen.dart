@@ -10,29 +10,42 @@ import 'data/datasourceincidentes.dart';
 import 'main.dart';
 
 class FormularioScreen extends StatelessWidget {
+  Incidente i = null;
 
+  FormularioScreen({this.i});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Formulário Incidente")),
-      body: myForm(),
+      body: myForm(this.i),
     );
   }
 }
 
 class myForm extends StatefulWidget {
+  Incidente i = null;
 
-
-  myForm();
+  myForm(this.i);
 
   @override
   _myFormState createState() {
-    return _myFormState();
+    return _myFormState(this.i);
   }
 }
 
 class _myFormState extends State<myForm> {
+  Incidente i = null;
+
+  _myFormState(this.i) {
+    if (i != null) {
+      tituloController = TextEditingController(text: i.titulo);
+      descricaoController = TextEditingController(text: i.descricao);
+      if (i.morada.isNotEmpty || i.morada == "") {
+        moradaController = TextEditingController(text: i.morada);
+      }
+    }
+  }
 
   final _formKey = GlobalKey<FormState>();
   TextEditingController tituloController = TextEditingController();
@@ -138,13 +151,19 @@ class _myFormState extends State<myForm> {
                     child: RaisedButton(
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
-                          IncidenteBlocProvider.getInstance().insereDados(Incidente(titulo: tituloController.text, descricao: descricaoController.text, morada: moradaController.text));
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => MyApp(),
-                              )
-                          );
+                          if (i == null) {
+                            IncidenteBlocProvider.getInstance().insereDados(
+                                Incidente(
+                                    titulo: tituloController.text,
+                                    descricao: descricaoController.text,
+                                    morada: moradaController.text));
+                          } else {
+                            i.titulo = tituloController.text;
+                            i.descricao = descricaoController.text;
+                            i.morada = moradaController.text;
+                            IncidenteBlocProvider.getInstance().updateDados(i);
+                          }
+                          showAlertDialog1(context);
                         }
                       },
                       child: Text(
@@ -155,6 +174,38 @@ class _myFormState extends State<myForm> {
                   ),
                 ]))),
       ],
+    );
+  }
+
+
+  showAlertDialog1(BuildContext context)
+  {
+    // configura o button
+    Widget okButton = FlatButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context, rootNavigator: true).pop('dialog');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => IncidentesAbertosScreen(),
+          ));
+      },
+    );
+    // configura o  AlertDialog
+    AlertDialog alerta = AlertDialog(
+      title: Text("Mensagem"),
+      content: Text(i == null ? "O seu incidente foi submetido com sucesso." : "O seu incidente foi editado com sucesso."),
+      actions: [
+        okButton,
+      ],
+    );
+    // exibe o dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alerta;
+      },
     );
   }
 }
