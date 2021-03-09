@@ -103,6 +103,25 @@ class ListaIncidente extends StatelessWidget {
                                 ],
                               ),
                             ),
+                            RawMaterialButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => DetailIncidenteScreen(incidente: item,isClosed: true,),
+                                    )
+                                );
+                              },
+                              elevation: 5.0,
+                              fillColor: Colors.lightBlue,
+                              child: Icon(
+                                Icons.more_horiz_outlined,
+                                color: Colors.white,
+                                size: 25.0,
+                              ),
+                              padding: EdgeInsets.all(1.0),
+                              shape: CircleBorder(),
+                            )
                           ],
                         ),
                       ),

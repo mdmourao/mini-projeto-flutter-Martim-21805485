@@ -15,7 +15,7 @@ class Incidente{
   }
 
   String toStringDate(){
-      return DateFormat('dd-MM-yyyy  kk:mm').format(date);
+      return DateFormat('dd-MM-yyyy kk:mm').format(date);
   }
 
 

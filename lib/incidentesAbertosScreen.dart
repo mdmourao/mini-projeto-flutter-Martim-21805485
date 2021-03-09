@@ -84,7 +84,10 @@ class ListaIncidente extends StatelessWidget {
                     padding: const EdgeInsets.all(10.0),
                     child: GestureDetector(
                       onDoubleTap: () =>  {
-                            IncidenteBlocProvider.getInstance().resolveIncidente()
+                            IncidenteBlocProvider.getInstance().resolveIncidente(),
+                          Scaffold.of(context).showSnackBar(
+                          SnackBar(content: Text("Um dos seus incidentes foi dado como resolvido.")))
+
                       },
                       onTap: () => {
                             Navigator.push(
@@ -97,7 +100,7 @@ class ListaIncidente extends StatelessWidget {
                       child: Card(
                         color: Colors.white60,
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(4.0),
                           child: Row(
                             children: <Widget>[
                               Padding(

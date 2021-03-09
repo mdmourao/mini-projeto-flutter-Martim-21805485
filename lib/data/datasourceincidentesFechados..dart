@@ -4,7 +4,7 @@ import 'dart:math';
 class DataSourceIncidenteFechado {
   final List<Incidente> _datasource = [
     Incidente(titulo: "Buraco Enorme na Estrada",
-        descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Aliquam porta elementum sem, non rutrum odio iaculis sed. Donec eget libero pellentesque, feugiat leo egestas, rutrum lacus.",
+        descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tempus leo vitae libero euismod pretium. ",
         morada: "Rua Joana", resolvido: true),
   ];
 
