@@ -115,8 +115,11 @@ class _myFormState extends State<myForm> {
                       if (value.isEmpty) {
                         return 'Descrição é obrigatório';
                       }
-                      if (value.length < 100 || value.length > 200) {
-                        return 'Descrição têm que ter entre 100 a 200 caracteres';
+                      if (value.length < 100) {
+                        return 'Descrição têm que ter mais de 100 caracteres';
+                      }
+                      if (value.length > 200) {
+                        return 'Descrição têm que ter menos de 200 caracteres';
                       }
                       return null;
                     },
@@ -194,7 +197,7 @@ class _myFormState extends State<myForm> {
     );
     // configura o  AlertDialog
     AlertDialog alerta = AlertDialog(
-      title: Text("Mensagem"),
+      title: Text("Mensagem De Sucesso"),
       content: Text(i == null ? "O seu incidente foi submetido com sucesso." : "O seu incidente foi editado com sucesso."),
       actions: [
         okButton,

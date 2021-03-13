@@ -73,8 +73,8 @@ class ListaIncidente extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
-                                  width: 50.0,
-                                  height: 50.0,
+                                  width: 40.0,
+                                  height: 40.0,
                                   decoration: new BoxDecoration(
                                       shape: BoxShape.circle,
                                       image: new DecorationImage(
@@ -113,7 +113,7 @@ class ListaIncidente extends StatelessWidget {
                                 );
                               },
                               elevation: 5.0,
-                              fillColor: Colors.lightBlue,
+                              fillColor: Colors.blueGrey,
                               child: Icon(
                                 Icons.more_horiz_outlined,
                                 color: Colors.white,

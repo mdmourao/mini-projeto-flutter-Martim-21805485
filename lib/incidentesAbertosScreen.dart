@@ -13,12 +13,14 @@ import 'package:flutter/material.dart';
 import 'package:hardware_buttons/hardware_buttons.dart' as HardwareButtons;
 
 class IncidentesAbertosScreen extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Incidentes Abertos e Resolvidos")),
+        appBar: AppBar(
+            title: Text("Incidentes Abertos e Resolvidos", style: TextStyle(
+              color: Colors.white,
+            ),),
+        ),
         body: StreamBuilder(
           initialData: [Incidente(titulo: "Teste")],
           stream: IncidenteBlocProvider.getInstance().output,
@@ -65,37 +67,38 @@ class ListaIncidente extends StatelessWidget {
             key: UniqueKey(),
             confirmDismiss: (direction) async {
               if (item.resolvido) {
-                Scaffold.of(context).showSnackBar(
-                    SnackBar(content: Text("O seu incidente foi dado como fechado.")));
+                Scaffold.of(context).showSnackBar(SnackBar(
+                    content: Text("O seu incidente foi dado como fechado.")));
                 return true;
-              } else{
-                Scaffold.of(context).showSnackBar(
-                    SnackBar(content: Text("Este incidente ainda não se encontra resolvido, por isso não pode transitar para a lista dos fechados.")));
+              } else {
+                Scaffold.of(context).showSnackBar(SnackBar(
+                    content: Text(
+                        "Este incidente ainda não se encontra resolvido, por isso não pode transitar para a lista dos fechados.")));
                 return false;
               }
             },
             onDismissed: (direction) {
               IncidenteBlocProvider.getInstance().close(item);
-
             },
             child: Column(
               children: [
                 Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: GestureDetector(
-                      onDoubleTap: () =>  {
-                            IncidenteBlocProvider.getInstance().resolveIncidente(),
-                          Scaffold.of(context).showSnackBar(
-                          SnackBar(content: Text("Um dos seus incidentes foi dado como resolvido.")))
-
+                      onDoubleTap: () => {
+                        IncidenteBlocProvider.getInstance().resolveIncidente(),
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                            content: Text(
+                                "Um dos seus incidentes foi dado como resolvido.")))
                       },
                       onTap: () => {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => DetailIncidenteScreen(incidente: item,),
-                                )
-                            )
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DetailIncidenteScreen(
+                                incidente: item,
+                              ),
+                            ))
                       },
                       child: Card(
                         color: Colors.white60,
@@ -144,12 +147,14 @@ class ListaIncidente extends StatelessWidget {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => DetailIncidenteScreen(incidente: item,),
-                                      )
-                                  );
+                                        builder: (context) =>
+                                            DetailIncidenteScreen(
+                                          incidente: item,
+                                        ),
+                                      ));
                                 },
                                 elevation: 5.0,
-                                fillColor: Colors.lightBlue,
+                                fillColor: Colors.blueGrey,
                                 child: Icon(
                                   Icons.more_horiz_outlined,
                                   color: Colors.white,
@@ -173,6 +178,4 @@ class ListaIncidente extends StatelessWidget {
       ),
     );
   }
-
-
 }

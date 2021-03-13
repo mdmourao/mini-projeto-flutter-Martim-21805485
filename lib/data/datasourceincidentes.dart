@@ -10,7 +10,7 @@ class DataSourceIncidente {
       morada: "Rua Joana"),
     Incidente(titulo: "Caiu Poste Eletricidade",
         descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Aliquam porta elementum sem, non rutrum odio iaculis sed. Donec eget libero pellentesque, feugiat leo egestas, rutrum lacus.",
-        morada: "Rua Joana",resolvido: true),
+        morada: "Rua Joana"),
     Incidente(titulo: "Fuga Esgotos na Estrada",
         descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit Aliquam porta elementum sem, non rutrum odio iaculis sed. Donec eget libero pellentesque, feugiat leo egestas, rutrum lacus.",
         morada: "Rua Joana"),
@@ -54,10 +54,10 @@ class DataSourceIncidente {
         allPos.add(i);
       }
     }
-    var random = rng.nextInt(allPos.length);
     if(allPos.length == 0){
       return;
     }
+    var random = rng.nextInt(allPos.length);
     _datasource.elementAt(allPos.elementAt(random)).resolvido = true;
   }
 

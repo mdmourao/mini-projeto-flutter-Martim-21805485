@@ -17,170 +17,13 @@ class DetailIncidenteScreen extends StatelessWidget {
     if (isClosed) {
       return Scaffold(
           appBar: AppBar(title: Text("Detalhes")),
-          body: Column(children: [
-            Container(
-              height: 170.0,
-              width: double.infinity,
-              child: Container(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    //Center Row contents horizontally,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    //Center Row contents vertically,
-                    children: [
-                      Text(
-                        incidente.titulo,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 30),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(8),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    //Center Row contents horizontally,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    //Center Row contents vertically,
-                    children: [
-                      Container(
-                        width: 25.0,
-                        height: 25.0,
-                        decoration: new BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: new DecorationImage(
-                                fit: BoxFit.cover,
-                                image:
-                                    AssetImage("lib/assets/close.png"))),
-                      ),
-                      Text(
-                        "Fechado",
-                        style: TextStyle(fontSize: 15),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(4),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    //Center Row contents horizontally,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    //Center Row contents vertically,
-                    children: [Text("Criado a: " + incidente.toStringDate())],
-                  ),
-                ],
-              )),
-              decoration: new BoxDecoration(
-                color: Colors.lightBlue,
-                boxShadow: [new BoxShadow(blurRadius: 40.0)],
-                borderRadius: new BorderRadius.vertical(
-                    bottom: new Radius.elliptical(
-                        MediaQuery.of(context).size.width, 100.0)),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(15),
-            ),
-            Stack(children: <Widget>[
+          body: SingleChildScrollView(
+            child: Column(children: [
               Container(
+                height: 170.0,
                 width: double.infinity,
-                height: 180,
-                margin: EdgeInsets.fromLTRB(20, 10, 20, 20),
-                padding: EdgeInsets.only(bottom: 10),
-                child: Padding(
-                  padding: EdgeInsets.all(12),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            " Descrição:",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(4),
-                      ),
-                      SizedBox(
-                          width: double.infinity,
-                          child: Text(
-                            incidente.descricao,
-                            style: TextStyle(
-                              fontSize: 15,
-                            ),
-                          ))
-                    ],
-                  ),
-                ),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.lightBlue, width: 4),
-                  borderRadius: BorderRadius.circular(15),
-                  shape: BoxShape.rectangle,
-                ),
-              ),
-            ]),
-            Stack(children: <Widget>[
-              Container(
-                width: double.infinity,
-                height: 120,
-                margin: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                padding: EdgeInsets.only(bottom: 10),
-                child: Padding(
-                  padding: EdgeInsets.all(12),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            " Morada:",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(6),
-                      ),
-                      SizedBox(
-                          width: double.infinity,
-                          child: Text(
-                            incidente.morada.isEmpty ? "Sem Morada" :  incidente.morada,
-                            style: TextStyle(
-                              fontSize: 15,
-                            ),
-                          ))
-                    ],
-                  ),
-                ),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.lightBlue, width: 4),
-                  borderRadius: BorderRadius.circular(15),
-                  shape: BoxShape.rectangle,
-                ),
-              ),
-            ]),
-          ]));
-    } else {
-      return Scaffold(
-        appBar: AppBar(title: Text(incidente.titulo)),
-        body: Column(children: [
-          Container(
-            height: 170.0,
-            width: double.infinity,
-            child: Container(
-                child: Column(
+                child: Container(
+                    child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -190,11 +33,178 @@ class DetailIncidenteScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       //Center Row contents vertically,
                       children: [
-                        Text(
-                          incidente.titulo,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 30),
+                        Expanded(
+                          child: Text(
+                            incidente.titulo,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 30,color: Colors.white),
+                          ),
+                        )
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      //Center Row contents horizontally,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      //Center Row contents vertically,
+                      children: [
+                        Container(
+                          width: 25.0,
+                          height: 25.0,
+                          decoration: new BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: new DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: AssetImage("lib/assets/close.png"))),
                         ),
+                        Text(
+                          "Fechado",
+                          style: TextStyle(fontSize: 15, color: Colors.white),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(4),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      //Center Row contents horizontally,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      //Center Row contents vertically,
+                      children: [Text("Criado a: " + incidente.toStringDate(),  style: TextStyle(fontSize: 15,color: Colors.white),)],
+                    ),
+                  ],
+                )),
+                decoration: new BoxDecoration(
+                  color: Colors.blueGrey,
+                  boxShadow: [new BoxShadow(blurRadius: 40.0)],
+                  borderRadius: new BorderRadius.vertical(
+                      bottom: new Radius.elliptical(
+                          MediaQuery.of(context).size.width, 100.0)),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(15),
+              ),
+              Stack(children: <Widget>[
+                Container(
+                  width: double.infinity,
+                  height: 220,
+                  margin: EdgeInsets.fromLTRB(20, 10, 20, 20),
+                  padding: EdgeInsets.only(bottom: 10),
+                  child: Padding(
+                    padding: EdgeInsets.all(12),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              " Descrição:",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(4),
+                        ),
+                        SizedBox(
+                            width: double.infinity,
+                            child: Text(
+                              incidente.descricao,
+                              style: TextStyle(
+                                fontSize: 15,
+                              ),
+                            ))
+                      ],
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blueGrey, width: 4),
+                    borderRadius: BorderRadius.circular(15),
+                    shape: BoxShape.rectangle,
+                  ),
+                ),
+              ]),
+              Stack(children: <Widget>[
+                Container(
+                  width: double.infinity,
+                  height: 100,
+                  margin: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                  padding: EdgeInsets.only(bottom: 10),
+                  child: Padding(
+                    padding: EdgeInsets.all(12),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              " Morada:",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(6),
+                        ),
+                        SizedBox(
+                            width: double.infinity,
+                            child: Text(
+                              incidente.morada.isEmpty
+                                  ? "Sem Morada"
+                                  : incidente.morada,
+                              style: TextStyle(
+                                fontSize: 15,
+                              ),
+                            ))
+                      ],
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blueGrey, width: 4),
+                    borderRadius: BorderRadius.circular(15),
+                    shape: BoxShape.rectangle,
+                  ),
+                ),
+              ]),
+            ]),
+          ));
+    } else {
+      return Scaffold(
+          appBar: AppBar(title: Text(incidente.titulo)),
+          body: SingleChildScrollView(
+            child: Column(children: [
+              Container(
+                height: 170.0,
+                width: double.infinity,
+                child: Container(
+                    child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      //Center Row contents horizontally,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      //Center Row contents vertically,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            incidente.titulo,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                            color: Colors.white,fontSize: 30),
+                          ),
+                        )
                       ],
                     ),
                     Padding(
@@ -214,14 +224,12 @@ class DetailIncidenteScreen extends StatelessWidget {
                               image: new DecorationImage(
                                   fit: BoxFit.cover,
                                   image: incidente.resolvido
-                                      ? AssetImage(
-                                      "lib/assets/checkgreen.png")
-                                      : AssetImage(
-                                      "lib/assets/green.png"))),
+                                      ? AssetImage("lib/assets/checkgreen.png")
+                                      : AssetImage("lib/assets/green.png"))),
                         ),
                         Text(
-                          incidente.resolvido ? "Resolvido" : "Aberto",
-                          style: TextStyle(fontSize: 15),
+                          incidente.resolvido ? " Resolvido" : " Aberto",
+                          style: TextStyle(fontSize: 15,color: Colors.white),
                         ),
                       ],
                     ),
@@ -233,146 +241,148 @@ class DetailIncidenteScreen extends StatelessWidget {
                       //Center Row contents horizontally,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       //Center Row contents vertically,
-                      children: [Text("Criado a: " + incidente.toStringDate())],
+                      children: [Text("Criado a: " + incidente.toStringDate(),  style: TextStyle(fontSize: 15,color: Colors.white),)],
                     ),
                   ],
                 )),
-            decoration: new BoxDecoration(
-              color: Colors.lightBlue,
-              boxShadow: [new BoxShadow(blurRadius: 40.0)],
-              borderRadius: new BorderRadius.vertical(
-                  bottom: new Radius.elliptical(
-                      MediaQuery.of(context).size.width, 100.0)),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(2),
-          ),
-          Stack(children: <Widget>[
-            Container(
-              width: double.infinity,
-              height: 180,
-              margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
-              padding: EdgeInsets.only(bottom: 10),
-              child: Padding(
-                padding: EdgeInsets.all(12),
-                child: Column(
-                  children: [
-                    Row(
+                decoration: new BoxDecoration(
+                  color: Colors.blueGrey,
+                  boxShadow: [new BoxShadow(blurRadius: 40.0)],
+                  borderRadius: new BorderRadius.vertical(
+                      bottom: new Radius.elliptical(
+                          MediaQuery.of(context).size.width, 100.0)),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(2),
+              ),
+              Stack(children: <Widget>[
+                Container(
+                  width: double.infinity,
+                  height: 220,
+                  margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                  padding: EdgeInsets.only(bottom: 10),
+                  child: Padding(
+                    padding: EdgeInsets.all(12),
+                    child: Column(
                       children: [
-                        Text(
-                          " Descrição:",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
+                        Row(
+                          children: [
+                            Text(
+                              " Descrição:",
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(4),
+                        ),
+                        SizedBox(
+                            width: double.infinity,
+                            child: Text(
+                              incidente.descricao,
+                              style: TextStyle(
+                                fontSize: 15,
+                              ),
+                            ))
                       ],
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(4),
-                    ),
-                    SizedBox(
-                        width: double.infinity,
-                        child: Text(
-                          incidente.descricao,
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
-                        ))
-                  ],
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blueGrey, width: 4),
+                    borderRadius: BorderRadius.circular(15),
+                    shape: BoxShape.rectangle,
+                  ),
                 ),
-              ),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.lightBlue, width: 4),
-                borderRadius: BorderRadius.circular(15),
-                shape: BoxShape.rectangle,
-              ),
-            ),
-          ]),
-          Stack(children: <Widget>[
-            Container(
-              width: double.infinity,
-              height: 100,
-              margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
-              padding: EdgeInsets.only(bottom: 10),
-              child: Padding(
-                padding: EdgeInsets.all(12),
-                child: Column(
-                  children: [
-                    Row(
+              ]),
+              Stack(children: <Widget>[
+                Container(
+                  width: double.infinity,
+                  height: 100,
+                  margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  padding: EdgeInsets.only(bottom: 10),
+                  child: Padding(
+                    padding: EdgeInsets.all(12),
+                    child: Column(
                       children: [
-                        Text(
-                          " Morada:",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
+                        Row(
+                          children: [
+                            Text(
+                              " Morada:",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(6),
+                        ),
+                        SizedBox(
+                            width: double.infinity,
+                            child: Text(
+                              incidente.morada.isEmpty
+                                  ? "Sem Morada"
+                                  : incidente.morada,
+                              style: TextStyle(
+                                fontSize: 15,
+                              ),
+                            ))
                       ],
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(6),
-                    ),
-                    SizedBox(
-                        width: double.infinity,
-                        child: Text(
-                          incidente.morada.isEmpty ? "Sem Morada" :  incidente.morada,
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
-                        ))
-                  ],
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blueGrey, width: 4),
+                    borderRadius: BorderRadius.circular(15),
+                    shape: BoxShape.rectangle,
+                  ),
                 ),
-              ),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.lightBlue, width: 4),
-                borderRadius: BorderRadius.circular(15),
-                shape: BoxShape.rectangle,
-              ),
-            ),
-          ]),
-          Padding(
-            padding: EdgeInsets.all(20),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            //Center Row contents horizontally,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            //Center Row contents vertically,
-            children: [
-              ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.red, // background
-                  onPrimary: Colors.white, // foreground
-                ),
-                onPressed: () {
-                  IncidenteBlocProvider.getInstance().remove(incidente);
-                  showAlertDialog(context);
-                },
-                icon: Icon(Icons.delete, size: 25),
-                label: Text("APAGAR"),
-              ),
+              ]),
               Padding(
                 padding: EdgeInsets.all(20),
               ),
-              ElevatedButton.icon(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => FormularioScreen(
-                          i: incidente,
-                        ),
-                      ));
-                },
-                icon: Icon(Icons.edit, size: 25),
-                label: Text("EDITAR"),
-              ),
-            ],
-          )
-        ])
-      );
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                //Center Row contents horizontally,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                //Center Row contents vertically,
+                children: [
+                  ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.red, // background
+                      onPrimary: Colors.white, // foreground
+                    ),
+                    onPressed: incidente.resolvido ? null : () {
+                      IncidenteBlocProvider.getInstance().remove(incidente);
+                      showAlertDialog(context);
+                    },
+                    icon: Icon(Icons.delete, size: 25),
+                    label: Text("APAGAR"),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => FormularioScreen(
+                              i: incidente,
+                            ),
+                          ));
+                    },
+                    icon: Icon(Icons.edit, size: 25),
+                    label: Text("EDITAR"),
+                  ),
+                ],
+              )
+            ]),
+          ));
     }
   }
 
@@ -392,7 +402,7 @@ class DetailIncidenteScreen extends StatelessWidget {
 
     // configura o  AlertDialog
     AlertDialog alerta = AlertDialog(
-      title: Text("Mensagem"),
+      title: Text("Mensagem De Sucesso"),
       content: Text("O seu incidente foi apagado com sucesso."),
       actions: [
         okButton,
