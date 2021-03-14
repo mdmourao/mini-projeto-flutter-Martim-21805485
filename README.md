@@ -1,3 +1,22 @@
+# Pedido Enunciado
+
+Nome: Martim Duarte Barja Mourão
+Nº Aluno: 21805485
+Link Youtube: https://youtu.be/H-UOoUPOiE8
+Resolver Incidente: Double-Click (dois clicks rapidos) no card de um incidente que se encontre na lista.
+
+#AutoAvaliação
+
+CRUD (Create Read Update Delete) dos Incidentes - 4
+Validação do formulário (tamanho, campos obrigatórios)  - 2 
+Listas de incidentes (abertos e resolvidos) | (fechados) - 4
+Transitar incidentes de resolvidos para fechados - 2
+Resolução de incidentes - 2
+Design e usabilidade - 1 
+Qualidade e criatividade do vídeo - 2
+
+TOTAL: 17 Valores
+
 # Mini Projeto Flutter 21805485
 
 A empresa iQueChumbei decidiu construir uma aplicação que visa ajudar os
