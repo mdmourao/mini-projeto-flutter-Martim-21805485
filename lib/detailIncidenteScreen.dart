@@ -367,7 +367,7 @@ class DetailIncidenteScreen extends StatelessWidget {
                     padding: EdgeInsets.all(20),
                   ),
                   ElevatedButton.icon(
-                    onPressed: () {
+                    onPressed: incidente.resolvido ? null : () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
